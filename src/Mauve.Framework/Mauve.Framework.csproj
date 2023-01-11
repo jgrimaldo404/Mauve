@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CEAB28E3-6023-45DE-8CD6-AE8F4FBC9651}</ProjectGuid>
+    <ProjectGuid>{9BAF95C2-3FB8-4FF4-95D9-ECD25BB28527}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mauve</RootNamespace>
@@ -35,12 +35,27 @@
     <ApplicationIcon>mauve.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
-      <HintPath>..\..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\nuget\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\nuget\Microsoft.Extensions.DependencyInjection.7.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\nuget\Microsoft.Extensions.DependencyInjection.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>..\..\..\..\nuget\Microsoft.Extensions.Logging.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\nuget\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\nuget\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +69,13 @@
   <ItemGroup>
     <Compile Include="AliasAttribute.cs" />
     <Compile Include="DateFormat.cs" />
+    <Compile Include="Diagnostics\DiagnosticSessionAppendRequest.cs" />
+    <Compile Include="Diagnostics\DiagnosticSessionCreateRequest.cs" />
+    <Compile Include="Diagnostics\DiagnosticSessionEndRequest.cs" />
+    <Compile Include="Diagnostics\DiagnosticService.cs" />
+    <Compile Include="Diagnostics\DiagnosticSession.cs" />
+    <Compile Include="Diagnostics\DiagnosticSessionUpdateRequest.cs" />
+    <Compile Include="Diagnostics\IServiceCollectionDiagnosticExtensions.cs" />
     <Compile Include="DiscoverableAttribute.cs" />
     <Compile Include="EventType.cs" />
     <Compile Include="Extensibility\DateTimeExtensions.cs" />
@@ -69,22 +91,22 @@
     <Compile Include="IExecutable.cs" />
     <Compile Include="IExecutableTOut.cs" />
     <Compile Include="IgnoreAttribute.cs" />
-    <Compile Include="IHandlerT.cs" />
-    <Compile Include="IHandlerT2.cs" />
+    <Compile Include="IRequestHandler.cs" />
+    <Compile Include="IRequestHandlerT.cs" />
     <Compile Include="IRequest.cs" />
     <Compile Include="IRequestT.cs" />
     <Compile Include="Math\NumericBaseConverter.cs" />
-    <Compile Include="Net\Clients\HttpNetworkClient.cs" />
-    <Compile Include="Net\Clients\SmtpNetworkClient.cs" />
-    <Compile Include="Net\INetworkClient.cs" />
-    <Compile Include="Net\INetworkRequest.cs" />
-    <Compile Include="Net\INetworkRequestT.cs" />
-    <Compile Include="Net\INetworkRequestBuilder.cs" />
-    <Compile Include="Net\INetworkRequestBuilderT.cs" />
+    <Compile Include="Net\.deprecated\Clients\HttpNetworkClient.cs" />
+    <Compile Include="Net\.deprecated\Clients\SmtpNetworkClient.cs" />
+    <Compile Include="Net\.deprecated\INetworkClient.cs" />
+    <Compile Include="Net\.deprecated\INetworkRequest.cs" />
+    <Compile Include="Net\.deprecated\INetworkRequestT.cs" />
+    <Compile Include="Net\.deprecated\INetworkRequestBuilder.cs" />
+    <Compile Include="Net\.deprecated\INetworkRequestBuilderT.cs" />
     <Compile Include="Math\NumericBase.cs" />
-    <Compile Include="Net\Clients\MsSqlNetworkClient.cs" />
-    <Compile Include="Net\INetworkService.cs" />
-    <Compile Include="Net\NetworkTokenType.cs" />
+    <Compile Include="Net\.deprecated\Clients\MsSqlNetworkClient.cs" />
+    <Compile Include="Net\.deprecated\INetworkService.cs" />
+    <Compile Include="Net\.deprecated\NetworkTokenType.cs" />
     <Compile Include="Patterns\Behavioral\IMediator.cs" />
     <Compile Include="Patterns\Creational\IFactory.cs" />
     <Compile Include="Patterns\Structural\BasicAdapter.cs" />
@@ -105,7 +127,7 @@
     <Compile Include="Runtime\EventMessageConsoleLogger.cs" />
     <Compile Include="Runtime\EventMessageFileLogger.cs" />
     <Compile Include="Runtime\EventMessageLogger.cs" />
-    <Compile Include="Runtime\ILogger.cs" />
+    <Compile Include="Runtime\ILegacyLogger.cs" />
     <Compile Include="Runtime\EventMessage.cs" />
     <Compile Include="Runtime\EventMessageSmtpLogger.cs" />
     <Compile Include="Patterns\IDependencyCollection.cs" />

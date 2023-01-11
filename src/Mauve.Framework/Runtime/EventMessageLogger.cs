@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 namespace Mauve.Runtime
 {
     /// <summary>
-    /// Represents an <see langword="abstract"/> implementation of <see cref="ILogger{T}"/> for working with <see cref="EventMessage"/> instances.
+    /// Represents an <see langword="abstract"/> implementation of <see cref="ILegacyLogger{T}"/> for working with <see cref="EventMessage"/> instances.
     /// </summary>
     /// <inheritdoc/>
-    public abstract class EventMessageLogger : ILogger<EventMessage>
+    public abstract class EventMessageLogger : ILegacyLogger<EventMessage>
     {
 
         #region Fields
@@ -19,7 +19,7 @@ namespace Mauve.Runtime
         #region Properties
 
         /// <summary>
-        /// The highest flag permitted to be logged by the <see cref="ILogger{T}"/> instance.
+        /// The highest flag permitted to be logged by the <see cref="ILegacyLogger{T}"/> instance.
         /// </summary>
         public EventType Threshold { get; set; }
 

@@ -6,7 +6,7 @@ namespace Mauve.Runtime
     /// <summary>
     /// Represents an <see langword="interface"/> that exposes generics enabled methods for logging.
     /// </summary>
-    public interface ILogger<T>
+    public interface ILegacyLogger<T>
     {
         /// <summary>
         /// Logs the specified input.
