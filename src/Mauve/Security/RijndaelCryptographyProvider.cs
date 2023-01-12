@@ -14,17 +14,9 @@ namespace Mauve.Security
     /// <inheritdoc/>
     public class RijndaelCryptographyProvider : CryptographyProvider
     {
-
-        #region Fields
-
         private ICryptoTransform _encryptionTransform;
         private ICryptoTransform _decryptionTransform;
         private RijndaelManaged _managedRijndael;
-
-        #endregion
-
-        #region Properties
-
         /// <summary>
         /// Specifies whether or not the <see cref="InitializationVector"/> should be appended to the output stream.
         /// </summary>
@@ -41,11 +33,6 @@ namespace Mauve.Security
         /// The secret key to be utilized by the symmetric algorithm to encrypt and decrypt data.
         /// </summary>
         public byte[] Key { get; private set; }
-
-        #endregion
-
-        #region Constructors
-
         /// <summary>
         /// Creates a new instance of <see cref="RijndaelCryptographyProvider"/> using <see cref="Encoding.Unicode"/>, <see cref="CipherMode.CBC"/>, <see cref="PaddingMode.PKCS7"/>, and randomly generated symmetric algorithm parameters.
         /// </summary>
@@ -420,14 +407,9 @@ namespace Mauve.Security
         public RijndaelCryptographyProvider(string password, byte[] salt, int pseudoByteCount, byte[] initializationVector, Encoding encoding, CipherMode cipherMode, PaddingMode paddingMode)
         {
             AppendIv = true;
-            using (var pdb = new PasswordDeriveBytes(password, salt))
-                Initialize(pdb.GetBytes(pseudoByteCount), initializationVector, encoding, cipherMode, paddingMode);
+            using var pdb = new PasswordDeriveBytes(password, salt);
+            Initialize(pdb.GetBytes(pseudoByteCount), initializationVector, encoding, cipherMode, paddingMode);
         }
-
-        #endregion
-
-        #region Public Methods
-
         /// <inheritdoc/>
         public override void Dispose()
         {
@@ -454,9 +436,9 @@ namespace Mauve.Security
                     iv = InitializationVector;
 
                 // Set the initialization vector and key.
-                using (var cryptoStream = new CryptoStream(memoryStream, _managedRijndael.CreateDecryptor(Key, iv), CryptoStreamMode.Read))
-                using (var streamReader = new StreamReader(cryptoStream, Encoding))
-                    decryptedData = streamReader.ReadToEnd();
+                using var cryptoStream = new CryptoStream(memoryStream, _managedRijndael.CreateDecryptor(Key, iv), CryptoStreamMode.Read);
+                using var streamReader = new StreamReader(cryptoStream, Encoding);
+                decryptedData = streamReader.ReadToEnd();
             }
 
             return decryptedData.Deserialize<T>(SerializationMethod.Json);
@@ -464,29 +446,20 @@ namespace Mauve.Security
         /// <inheritdoc/>
         public override string Encrypt<T>(T input)
         {
-            using (var memoryStream = new MemoryStream())
-            {
-                if (AppendIv)
-                    memoryStream.Write(InitializationVector, 0, InitializationVector.Length);
+            using var memoryStream = new MemoryStream();
+            if (AppendIv)
+                memoryStream.Write(InitializationVector, 0, InitializationVector.Length);
 
-                using (var cryptoStream = new CryptoStream(memoryStream, _encryptionTransform, CryptoStreamMode.Write))
-                {
-                    // Get the raw data and write it to the stream.
-                    string serializedData = input.Serialize(SerializationMethod.Json);
-                    using (var streamWriter = new StreamWriter(cryptoStream, Encoding))
-                        streamWriter.Write(serializedData);
+            using var cryptoStream = new CryptoStream(memoryStream, _encryptionTransform, CryptoStreamMode.Write);
+            // Get the raw data and write it to the stream.
+            string serializedData = input.Serialize(SerializationMethod.Json);
+            using (var streamWriter = new StreamWriter(cryptoStream, Encoding))
+                streamWriter.Write(serializedData);
 
-                    // Capture the result and return it to the consumer.
-                    byte[] encryptedData = memoryStream.ToArray();
-                    return Convert.ToBase64String(encryptedData);
-                }
-            }
+            // Capture the result and return it to the consumer.
+            byte[] encryptedData = memoryStream.ToArray();
+            return Convert.ToBase64String(encryptedData);
         }
-
-        #endregion
-
-        #region Private Methods
-
         /// <summary>
         /// Initializes the <see cref="RijndaelCryptographyProvider"/>.
         /// </summary>
@@ -526,8 +499,5 @@ namespace Mauve.Security
             // Utilize unicode as the default encoding.
             Encoding = Encoding.Unicode;
         }
-
-        #endregion
-
     }
 }

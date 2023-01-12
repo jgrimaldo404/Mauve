@@ -7,9 +7,6 @@ namespace Mauve.Validation
     /// </summary>
     public sealed class NotAuthorizedException : Exception
     {
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new instance of <see cref="NotAuthorizedException"/>.
         /// </summary>
@@ -23,8 +20,5 @@ namespace Mauve.Validation
         public NotAuthorizedException(string details) :
             base($"Not authorized. {details}")
         { }
-
-        #endregion
-
     }
 }

@@ -5,29 +5,16 @@
     /// </summary>
     public abstract class SerializationProvider
     {
-
-        #region Properties
-
         /// <summary>
         /// The <see cref="Mauve.SerializationMethod"/> utilized for the serialization and deserialization of data.
         /// </summary>
         public SerializationMethod SerializationMethod { get; private set; }
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new instance of <see cref="SerializationProvider"/> with the specified <see cref="Mauve.SerializationMethod"/>.
         /// </summary>
         /// <param name="serializationMethod">The <see cref="Mauve.SerializationMethod"/> that should be utilized for the serialization and deserialization of data.</param>
         public SerializationProvider(SerializationMethod serializationMethod) =>
             SerializationMethod = serializationMethod;
-
-        #endregion
-
-        #region Public Methods
-
         /// <summary>
         /// Deserializes the input string utilizing the current serialization configuration.
         /// </summary>
@@ -42,8 +29,5 @@
         /// <param name="input">The data to be serialized.</param>
         /// <returns>Returns the input data serialized using the specified <see cref="Mauve.SerializationMethod"/>.</returns>
         public abstract string Serialize<T>(T input);
-
-        #endregion
-
     }
 }

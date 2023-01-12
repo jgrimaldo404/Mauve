@@ -7,15 +7,7 @@ namespace Mauve.Math
     /// </summary>
     public class NumericBaseConverter
     {
-
-        #region Constants
-
         private const string CharacterSet = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghjklmnopqrstuvwxyz";
-
-        #endregion
-
-        #region Public Methods
-
         /// <summary>
         /// Converts the specified input between the specified <paramref name="from"/> <see cref="NumericBase"/> and <paramref name="to"/> <see cref="NumericBase"/>.
         /// </summary>
@@ -30,11 +22,6 @@ namespace Mauve.Math
             int decimalValue = ToDecimal(input, fromSet);
             return FromDecimal(decimalValue, toSet);
         }
-
-        #endregion
-
-        #region Private Methods
-
         private string FromDecimal(int input, char[] characters)
         {
             string result = string.Empty;
@@ -63,8 +50,5 @@ namespace Mauve.Math
 
             return result;
         }
-
-        #endregion
-
     }
 }

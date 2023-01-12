@@ -6,9 +6,6 @@ namespace Mauve.Extensibility
 {
     public static class TypeExtensions
     {
-
-        #region Public Methods
-
         /// <summary>
         /// Determines whether the specified type is a concrete type.
         /// </summary>
@@ -57,11 +54,6 @@ namespace Mauve.Extensibility
 
             return false;
         }
-
-        #endregion
-
-        #region Private Methods
-
         private static Type GetFullTypeDefinition(Type type) => type.IsGenericType ? type.GetGenericTypeDefinition() : type;
         private static bool VerifyGenericArguments(Type parent, Type child)
         {
@@ -75,8 +67,5 @@ namespace Mauve.Extensibility
 
             return true;
         }
-
-        #endregion
-
     }
 }

@@ -11,18 +11,10 @@ namespace Mauve.Serialization
     /// <inheritdoc/>
     public class BinarySerializationProvider : SerializationProvider
     {
-
-        #region Properties
-
         /// <summary>
         /// The <see cref="System.Text.Encoding"/> the data should be serialized and deserialized with.
         /// </summary>
         public Encoding Encoding { get; private set; }
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new instance of <see cref="BinarySerializationProvider"/> using <see cref="System.Text.Encoding.Unicode"/>.
         /// </summary>
@@ -33,23 +25,16 @@ namespace Mauve.Serialization
         public BinarySerializationProvider(Encoding encoding) :
             base(SerializationMethod.Binary) =>
                 Encoding = encoding;
-
-        #endregion
-
-        #region Public Methods
-
         /// <inheritdoc/>
         public override T Deserialize<T>(string input)
         {
             byte[] decodedInput = Encoding.GetBytes(input);
-            using (var stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                stream.Write(decodedInput, 0, decodedInput.Length);
-                _ = stream.Seek(0, SeekOrigin.Begin);
-                object deserializedObject = formatter.Deserialize(stream);
-                return (T)Convert.ChangeType(deserializedObject, typeof(T));
-            }
+            using var stream = new MemoryStream();
+            var formatter = new BinaryFormatter();
+            stream.Write(decodedInput, 0, decodedInput.Length);
+            _ = stream.Seek(0, SeekOrigin.Begin);
+            object deserializedObject = formatter.Deserialize(stream);
+            return (T)Convert.ChangeType(deserializedObject, typeof(T));
         }
         /// <inheritdoc/>
         public override string Serialize<T>(T input)
@@ -64,8 +49,5 @@ namespace Mauve.Serialization
 
             return Encoding.GetString(serializedBytes);
         }
-
-        #endregion
-
     }
 }

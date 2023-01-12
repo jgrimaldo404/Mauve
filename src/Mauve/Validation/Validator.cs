@@ -6,9 +6,6 @@
     /// <typeparam name="T">Specifies the type of data the validator is validating.</typeparam>
     public abstract class Validator<T>
     {
-
-        #region Public Methods
-
         /// <summary>
         /// Attempts to validate the input for the <see cref="Validator{T}"/> instance.
         /// </summary>
@@ -30,8 +27,5 @@
         /// </summary>
         /// <param name="input">The input to validate.</param>
         public abstract void Validate(T input);
-
-        #endregion
-
     }
 }

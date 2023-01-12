@@ -11,47 +11,28 @@ namespace Mauve.Serialization
     /// <inheritdoc/>
     public class XmlSerializationProvider : SerializationProvider
     {
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new instance of <see cref="XmlSerializationProvider"/>.
         /// </summary>
         public XmlSerializationProvider() : base(SerializationMethod.Xml) { }
-
-        #endregion
-
-        #region Public Methods
-
         /// <inheritdoc/>
         public override T Deserialize<T>(string input)
         {
-            using (var stringReader = new StringReader(input))
-            {
-                var settings = new XmlReaderSettings();
-                using (var xmlReader = XmlReader.Create(stringReader, settings))
-                {
-                    var serializer = new XmlSerializer(typeof(T));
-                    return (T)Convert.ChangeType(serializer.Deserialize(xmlReader), typeof(T));
-                }
-            }
+            using var stringReader = new StringReader(input);
+            var settings = new XmlReaderSettings();
+            using var xmlReader = XmlReader.Create(stringReader, settings);
+            var serializer = new XmlSerializer(typeof(T));
+            return (T)Convert.ChangeType(serializer.Deserialize(xmlReader), typeof(T));
         }
         /// <inheritdoc/>
         public override string Serialize<T>(T input)
         {
-            using (var textWriter = new StringWriter())
-            {
-                var settings = new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, ConformanceLevel = ConformanceLevel.Auto };
-                using (var xmlWriter = XmlWriter.Create(textWriter, settings))
-                {
-                    var serializer = new XmlSerializer(typeof(T));
-                    serializer.Serialize(xmlWriter, input);
-                    return textWriter.ToString();
-                }
-            }
+            using var textWriter = new StringWriter();
+            var settings = new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, ConformanceLevel = ConformanceLevel.Auto };
+            using var xmlWriter = XmlWriter.Create(textWriter, settings);
+            var serializer = new XmlSerializer(typeof(T));
+            serializer.Serialize(xmlWriter, input);
+            return textWriter.ToString();
         }
-
-        #endregion
-
     }
 }

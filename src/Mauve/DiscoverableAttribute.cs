@@ -8,9 +8,6 @@ namespace Mauve
     [AttributeUsage(AttributeTargets.All, AllowMultiple = false)]
     public class DiscoverableAttribute : Attribute
     {
-
-        #region Properties
-
         /// <summary>
         /// The name of the object marked as discoverable.
         /// </summary>
@@ -21,11 +18,6 @@ namespace Mauve
         /// </summary>
         /// <remarks>This property is intended for display purposes.</remarks>
         public string Description { get; set; }
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new <see cref="DiscoverableAttribute"/> instance.
         /// </summary>
@@ -48,8 +40,5 @@ namespace Mauve
             Name = name;
             Description = description;
         }
-
-        #endregion
-
     }
 }

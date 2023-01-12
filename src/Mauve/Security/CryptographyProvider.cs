@@ -8,8 +8,6 @@ namespace Mauve.Security
     public abstract class CryptographyProvider : IDisposable
     {
 
-        #region Public Methods
-
         /// <summary>
         /// Disposes of the <see cref="CryptographyProvider"/> instance and its resources.
         /// </summary>
@@ -28,8 +26,5 @@ namespace Mauve.Security
         /// <param name="input">The data to decrypt.</param>
         /// <returns>Returns the data decrypted using the current configuration.</returns>
         public abstract T Decrypt<T>(string input);
-
-        #endregion
-
     }
 }
