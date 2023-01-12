@@ -9,6 +9,19 @@ namespace Mauve.Extensibility
 
         #region Public Methods
 
+        /// <summary>
+        /// Determines whether the specified type is a concrete type.
+        /// </summary>
+        /// <param name="type">The type to check.</param>
+        /// <param name="includeStruct">Specifies whether a <see langword="struct"/> should be considered concrete.</param>
+        /// <returns><see langword="true"/> if <paramref name="type"/> is a concrete type, otherwise <see langword="false"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="type"/> is <see langword="null"/>.</exception>
+        public static bool IsConcrete(this Type type, bool includeStruct = false) =>
+            type is null
+                ? throw new ArgumentNullException("`type` cannot be null.")
+                : type.IsValueType
+                    ? includeStruct
+                    : !type.IsInterface && !type.IsAbstract;
         public static bool DerivesFrom<T>(this Type child) =>
             DerivesFrom(child, typeof(T));
         public static bool DerivesFrom(this Type child, Type parent)
