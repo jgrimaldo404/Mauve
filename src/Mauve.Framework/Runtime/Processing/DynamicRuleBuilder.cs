@@ -7,22 +7,9 @@ namespace Mauve.Runtime.Processing
 {
     public class DynamicRuleBuilder<T> : IDynamicRuleBuilder<T>
     {
-
-        #region Fields
-
         private readonly List<Func<T, bool>> _functions;
-
-        #endregion
-
-        #region Constructor
-
         public DynamicRuleBuilder() =>
             _functions = new List<Func<T, bool>>();
-
-        #endregion
-
-        #region Public Methods
-
         public DynamicRule<T> Build() =>
             new DynamicRule<T>(_functions);
         public IDynamicRuleBuilder<T> Then(Action<T> action)
@@ -49,8 +36,5 @@ namespace Mauve.Runtime.Processing
             When(input => !input.In(values));
         public IDynamicRuleBuilder<T> WhenNull() =>
             When(input => input == null);
-
-        #endregion
-
     }
 }
