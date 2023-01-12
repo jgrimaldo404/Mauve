@@ -9,17 +9,9 @@ namespace Mauve.Runtime
     /// <inheritdoc/>
     public class EventMessageFileLogger : EventMessageLogger
     {
-
-        #region Fields
-
         private readonly bool _createDirectory;
         private readonly string _fileName;
         private readonly string _directory;
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new <see cref="EventMessageFileLogger"/> targeting the specified directory and file.
         /// </summary>
@@ -32,11 +24,6 @@ namespace Mauve.Runtime
             _fileName = fileName;
             _directory = directory;
         }
-
-        #endregion
-
-        #region Protected Methods
-
         protected override void WriteMessage(EventMessage message)
         {
             if (_createDirectory && !Directory.Exists(_directory))
@@ -45,8 +32,5 @@ namespace Mauve.Runtime
             string file = Path.Combine(_directory, _fileName);
             File.WriteAllText(file, $"{DateTime.Now} ({message.Type}): {message.Value}");
         }
-
-        #endregion
-
     }
 }
