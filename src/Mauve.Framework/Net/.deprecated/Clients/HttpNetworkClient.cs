@@ -12,23 +12,10 @@ namespace Mauve.Net
 {
     public class HttpNetworkClient : INetworkClient
     {
-
-        #region Fields
-
         private readonly string _baseUri;
-
-        #endregion
-
-        #region Constructor
-
         public HttpNetworkClient() { }
         public HttpNetworkClient(string baseUri) =>
             _baseUri = baseUri;
-
-        #endregion
-
-        #region Public Methods
-
         public void Send(INetworkRequest request)
         {
             HttpRequestMessage httpRequest = BuildRequestMessage(request);
@@ -77,11 +64,6 @@ namespace Mauve.Net
             await Task.Run(() => Send<T>(request), cancellationToken);
         public async Task<TOut> SendAsync<TIn, TOut>(INetworkRequest<TIn> request, CancellationToken cancellationToken) =>
             await Task.Run(() => Send<TIn, TOut>(request), cancellationToken);
-
-        #endregion
-
-        #region Private Methods
-
         private HttpRequestMessage BuildRequestMessage(INetworkRequest request) =>
             BuildRequestMessage(
                 request.Uri,
@@ -125,8 +107,5 @@ namespace Mauve.Net
 
             return httpRequest;
         }
-
-        #endregion
-
     }
 }
