@@ -1,7 +1,6 @@
 name: 🐙 Request a new Extension Method
-title: 🐙 Add an extension method.
 description: Have an idea to simplify a very repetative process for a specific type? While extension methods have a bad reputation, when implemented properly, they can be very powerful.
-labels: [enhancement,framework,under review]
+labels: [enhancement,extensions,under review]
 body:
   - type: dropdown
     id: version
@@ -15,7 +14,7 @@ body:
   - type: input
     attributes:
       label: 🦖 What type is this extension method for?
-      description: Please include the namespace and type if applicable.
+      description: Please include the namespace and type.
   - type: textarea
     attributes:
       label: 😭 What problem does your proposition aim to solve?

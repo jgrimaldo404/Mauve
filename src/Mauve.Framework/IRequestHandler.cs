@@ -7,7 +7,7 @@ namespace Mauve
     /// An <see langword="interface"/> that exposes methods to handle input.
     /// </summary>
     /// <typeparam name="T">Specifies the type of data used as input for the handler.</typeparam>
-    public interface IHandler<T>
+    public interface IRequestHandler<T> where T : IRequest
     {
         /// <summary>
         /// Handles the input.
