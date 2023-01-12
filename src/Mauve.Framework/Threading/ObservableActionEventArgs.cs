@@ -9,9 +9,6 @@ namespace Mauve.Threading
     /// </summary>
     public class ObservableActionEventArgs : EventArgs
     {
-
-        #region Properties
-
         /// <summary>
         /// Any data associated with the event.
         /// </summary>
@@ -20,11 +17,6 @@ namespace Mauve.Threading
         /// The <see cref="EventMessage"/> describing the event.
         /// </summary>
         public EventMessage Message { get; set; }
-
-        #endregion
-
-        #region Constructors
-
         /// <summary>
         /// Creates a new <see cref="ObservableActionEventArgs"/> instance.
         /// </summary>
@@ -59,8 +51,5 @@ namespace Mauve.Threading
             Message = message;
             Data = data;
         }
-
-        #endregion
-
     }
 }
