@@ -38,7 +38,3 @@ Here you can find the most recent release notes for each Mauve product.
 
 ### Framework
  - Current Version: 🐣 Pre-Release
-
-### Extension
- - Visual Studio Community: 🐣 Pre-Release
- - Visual Studio Code: 🐣 Pre-Release
