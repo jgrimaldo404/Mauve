@@ -7,26 +7,13 @@ namespace Mauve.Text
     /// </summary>
     public sealed class SubstringQueue
     {
-
-        #region Fields
-
         private int _index = 0;
         private readonly string _fullString = string.Empty;
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new instance of <see cref="SubstringQueue"/> with the specified input string.
         /// </summary>
         /// <param name="value">The string value this queue will be working with.</param>
         public SubstringQueue(string value) => _fullString = value;
-
-        #endregion
-
-        #region Public Methods
-
         /// <summary>
         /// Resets the queue back to the start of the string.
         /// </summary>
@@ -78,8 +65,5 @@ namespace Mauve.Text
             _index += length;
             return this;
         }
-
-        #endregion
-
     }
 }
