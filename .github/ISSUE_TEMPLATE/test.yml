@@ -1,5 +1,4 @@
 name: 🧪 Request a new Test Case
-title: 🧪 Add a new test case.
 description: Have an idea for a test case we haven't accounted for yet? Share it with us, it'll only make Mauve stronger.
 labels: [test,under review]
 body:
@@ -15,7 +14,7 @@ body:
   - type: input
     attributes:
       label: 🦖 What type is this test for?
-      description: Please include the namespace and type if applicable.
+      description: Please include the namespace and type.
   - type: textarea
     attributes:
       label: 😭 What problem does your proposition aim to solve?
