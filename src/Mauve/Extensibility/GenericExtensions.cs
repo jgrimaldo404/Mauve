@@ -17,9 +17,6 @@ namespace Mauve.Extensibility
     /// </summary>
     public static class GenericExtensions
     {
-
-        #region Get Hash Code
-
         /// <summary>
         /// Gets the hash code of the input in the specified <see cref="NumericBase"/>.
         /// </summary>
@@ -106,11 +103,6 @@ namespace Mauve.Extensibility
             var converter = new NumericBaseConverter();
             return converter.Convert(result, NumericBase.Hexadecimal, numericBase);
         }
-
-        #endregion
-
-        #region In
-
         /// <summary>
         /// Determines if a specified value is present in a specified collection using a specified equality comparer.
         /// </summary>
@@ -130,11 +122,6 @@ namespace Mauve.Extensibility
         /// <returns><see langword="true"/> if the specified collection contains the specified input, otherwise <see langword="false"/>.</returns>
         public static bool In<T>(this T input, IEqualityComparer<T> equalityComparer, params T[] collection) =>
             collection?.Any(a => equalityComparer.Equals(a, input)) == true;
-
-        #endregion
-
-        #region Other Methods
-
         /// <summary>
         /// Translates the specified input to a specified output type using a <see cref="BasicAdapter{T1, T2}"/>.
         /// </summary>
@@ -183,8 +170,5 @@ namespace Mauve.Extensibility
             };
             return serializationProvider.Serialize(input);
         }
-
-        #endregion
-
     }
 }
