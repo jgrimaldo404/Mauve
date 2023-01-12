@@ -16,6 +16,7 @@ namespace Mauve.Extensibility
         /// <param name="includeStruct">Specifies whether a <see langword="struct"/> should be considered concrete.</param>
         /// <returns><see langword="true"/> if <paramref name="type"/> is a concrete type, otherwise <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="type"/> is <see langword="null"/>.</exception>
+        [Obsolete("The entire Mauve.Framework project has been deprecated and will no longer be supported after 31 DEC 2023. Please upgrade to .NET 5.0 or later and utilize the Mauve 2023.1+ NuGet packages.")]
         public static bool IsConcrete(this Type type, bool includeStruct = false) =>
             type is null
                 ? throw new ArgumentNullException("`type` cannot be null.")
