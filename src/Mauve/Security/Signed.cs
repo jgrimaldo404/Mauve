@@ -7,9 +7,6 @@
     /// <typeparam name="TSignatureAuthority">The type of authority used to sign the data.</typeparam>
     public class Signed<TData, TSignatureAuthority>
     {
-
-        #region Properties
-
         /// <summary>
         /// The signed data.
         /// </summary>
@@ -18,8 +15,5 @@
         /// The signature for the data.
         /// </summary>
         public Signature<TSignatureAuthority> Signature { get; set; }
-
-        #endregion
-
     }
 }
