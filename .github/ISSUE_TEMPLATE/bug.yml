@@ -1,5 +1,4 @@
 name: 🐲 Report a Problem
-title: 🐲 Here there be dragons...
 description: If you're encountering a problem, then you can report it here.
 labels: [bug,under review]
 body:
@@ -10,17 +9,6 @@ body:
       description: Which version of Mauve are you currently using?
       options:
         - 🐣 Pre-Release
-    validations:
-      required: true
-  - type: dropdown
-    id: product
-    attributes:
-      label: 🌠 Product
-      description: Which sub-product of Mauve is this feature for?
-      options:
-        - Ⓜ️ Framework
-        - 🦄 Visual Studio Community Extension
-        - 🐲 Visual Studio Code Extension
     validations:
       required: true
   - type: textarea
