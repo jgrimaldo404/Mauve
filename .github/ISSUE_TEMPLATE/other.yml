@@ -1,5 +1,5 @@
 name: 🧠 It's something else
-description: Need to open an issue for something that isn't a bug, extension method, feature, or test case? Use this template to request documentation changes, repository updates, actions issues, and anything else you can think of!
+description: Need to open an issue for something that isn't a bug, extension method, feature, or test case? This template has you covered!
 labels: [needs categorization,under review]
 body:
   - type: dropdown
