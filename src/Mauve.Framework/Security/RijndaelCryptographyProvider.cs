@@ -14,17 +14,9 @@ namespace Mauve.Security
     /// <inheritdoc/>
     public class RijndaelCryptographyProvider : CryptographyProvider
     {
-
-        #region Fields
-
         private ICryptoTransform _encryptionTransform;
         private ICryptoTransform _decryptionTransform;
         private RijndaelManaged _managedRijndael;
-
-        #endregion
-
-        #region Properties
-
         /// <summary>
         /// Specifies whether or not the <see cref="InitializationVector"/> should be appended to the output stream.
         /// </summary>
@@ -41,11 +33,6 @@ namespace Mauve.Security
         /// The secret key to be utilized by the symmetric algorithm to encrypt and decrypt data.
         /// </summary>
         public byte[] Key { get; private set; }
-
-        #endregion
-
-        #region Constructors
-
         /// <summary>
         /// Creates a new instance of <see cref="RijndaelCryptographyProvider"/> using <see cref="Encoding.Unicode"/>, <see cref="CipherMode.CBC"/>, <see cref="PaddingMode.PKCS7"/>, and randomly generated symmetric algorithm parameters.
         /// </summary>
@@ -423,11 +410,6 @@ namespace Mauve.Security
             using (var pdb = new PasswordDeriveBytes(password, salt))
                 Initialize(pdb.GetBytes(pseudoByteCount), initializationVector, encoding, cipherMode, paddingMode);
         }
-
-        #endregion
-
-        #region Public Methods
-
         /// <inheritdoc/>
         public override void Dispose()
         {
@@ -482,11 +464,6 @@ namespace Mauve.Security
                 }
             }
         }
-
-        #endregion
-
-        #region Private Methods
-
         /// <summary>
         /// Initializes the <see cref="RijndaelCryptographyProvider"/>.
         /// </summary>
@@ -526,8 +503,5 @@ namespace Mauve.Security
             // Utilize unicode as the default encoding.
             Encoding = Encoding.Unicode;
         }
-
-        #endregion
-
     }
 }
