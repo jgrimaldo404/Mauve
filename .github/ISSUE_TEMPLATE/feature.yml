@@ -1,5 +1,4 @@
 name: 💥 Request a new Feature
-title: 💥 Add a new feature.
 description: Have an idea that would make life easier for others? You can request a new feature here.
 labels: [enhancement,under review]
 body:
@@ -10,17 +9,6 @@ body:
       description: Which version of Mauve are you currently using?
       options:
         - 🐣 Pre-Release
-    validations:
-      required: true
-  - type: dropdown
-    id: product
-    attributes:
-      label: 🌠 Product
-      description: Which sub-product of Mauve is this feature for?
-      options:
-        - Ⓜ️ Framework
-        - 🦄 Visual Studio Community Extension
-        - 🐲 Visual Studio Code Extension
     validations:
       required: true
   - type: textarea
