@@ -7,9 +7,6 @@ namespace Mauve.Extensibility
     /// </summary>
     public static class DateTimeExtensions
     {
-
-        #region Public Methods
-
         /// <summary>
         /// Translates the specified <see cref="DateTime"/> instance to a string using a specified <see cref="DateFormat"/>.
         /// </summary>
@@ -37,11 +34,6 @@ namespace Mauve.Extensibility
             universal
                 ? input.ToUniversalTime().ToString(format)
                 : input.ToString(format);
-
-        #endregion
-
-        #region Private Methods
-
         /// <summary>
         /// Gets the format specifier for a specified <see cref="DateFormat"/>.
         /// </summary>
@@ -49,16 +41,13 @@ namespace Mauve.Extensibility
         /// <returns>Returns the format specifier for a specified <see cref="DateFormat"/>.</returns>
         private static string GetFormatSpecifier(DateFormat format)
         {
-            switch (format)
+            return format switch
             {
-                case DateFormat.Iso8601: return "yyyy-MM-ddTHH:mm:ss.ffK";
-                case DateFormat.Rfc3339: return "yyyy-MM-dd'T'HH:mm:ss.fffK";
-                case DateFormat.MsSql: return "yyyy-MM-dd HH:mm:ss.fff";
-                default: return string.Empty;
-            }
+                DateFormat.Iso8601 => "yyyy-MM-ddTHH:mm:ss.ffK",
+                DateFormat.Rfc3339 => "yyyy-MM-dd'T'HH:mm:ss.fffK",
+                DateFormat.MsSql => "yyyy-MM-dd HH:mm:ss.fff",
+                _ => string.Empty,
+            };
         }
-
-        #endregion
-
     }
 }
