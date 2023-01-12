@@ -4,6 +4,20 @@ From basic extension methods to complete implementations of design patterns, Mau
 
 <sub>***Note**: Our chosen shade of mauve has a hexadecimal color code of `0xe0b0ff`.*</sub>
 
+## Extension Methods
+Mauve offers a variety of useful extension methods for the most common data types in the `C#` language:
+
+ - `int`
+ - `string`
+ - `DateTime`
+ - `Exception`
+ - `IComparable`
+ - `IEnumerable<T>`
+
+ Additionally, there are a few extension methods using generics for type safety that apply to all types.
+
+*See our [wiki](https://github.com/tacosontitan/Mauve/wiki/Mauve.Extensibility) for more details.*
+
 ## Mauve.Framework (*Deprecation Notice*)
 The `Mauve.Framework` project has officially been deprecated and efforts are being made to mark the project objects as such. The project is targeted to be marked as deprecated by the end of January 2023 and support will end with the 2023 calendar year. We recommend opting for the new `Mauve` project running on `.NET 6.0`, features from `Mauve.Framework` are being evaluated for transfer and will be transfered only if a more production ready replacement is not available (e.g. MediatR and Fluent Validation).
 
@@ -18,20 +32,6 @@ The following features are available for use through Mauve:
 |Validation|Validation should be simple, concise, and encapsulated.|
 
 There are many more features available in the framework of course, but the above are easily the most popular. For more information, see the [wiki](https://github.com/tacosontitan/Mauve/wiki).
-
-## Extension Methods
-Mauve offers a variety of useful extension methods for the most common data types in the `C#` language:
-
- - `int`
- - `string`
- - `DateTime`
- - `Exception`
- - `IComparable`
- - `IEnumerable<T>`
-
- Additionally, there are a few extension methods using generics for type safety that apply to all types.
-
-*See our [wiki](https://github.com/tacosontitan/Mauve/wiki/Mauve.Extensibility) for more details.*
 
 ## Release Notes
 Here you can find the most recent release notes for each Mauve product.
