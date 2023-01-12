@@ -11,18 +11,10 @@ namespace Mauve.Serialization
     /// <inheritdoc/>
     public class XmlSerializationProvider : SerializationProvider
     {
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new instance of <see cref="XmlSerializationProvider"/>.
         /// </summary>
         public XmlSerializationProvider() : base(SerializationMethod.Xml) { }
-
-        #endregion
-
-        #region Public Methods
-
         /// <inheritdoc/>
         public override T Deserialize<T>(string input)
         {
@@ -50,8 +42,5 @@ namespace Mauve.Serialization
                 }
             }
         }
-
-        #endregion
-
     }
 }
