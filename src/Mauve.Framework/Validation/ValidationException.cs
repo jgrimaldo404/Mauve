@@ -7,9 +7,6 @@ namespace Mauve.Validation
     /// </summary>
     public class ValidationException : Exception
     {
-
-        #region Properties
-
         /// <summary>
         /// The input that failed validation.
         /// </summary>
@@ -18,11 +15,6 @@ namespace Mauve.Validation
         /// The expectation the validation failed to meet.
         /// </summary>
         public object Expectation { get; set; }
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new <see cref="ValidationException"/> instance with the specified <see cref="ValidationResult"/> and message.
         /// </summary>
@@ -35,8 +27,5 @@ namespace Mauve.Validation
             Input = input;
             Expectation = expectation;
         }
-
-        #endregion
-
     }
 }
