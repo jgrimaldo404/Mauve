@@ -85,6 +85,7 @@
     <Compile Include="Extensibility\IEnumerableExtensions.cs" />
     <Compile Include="Extensibility\Int32Extensions.cs" />
     <Compile Include="Extensibility\QueueExtensions.cs" />
+    <Compile Include="Extensibility\StringBuilderExtensions.cs" />
     <Compile Include="Extensibility\StringExtensions.cs" />
     <Compile Include="Extensibility\TypeExtensions.cs" />
     <Compile Include="IExecutableTInTOut.cs" />
