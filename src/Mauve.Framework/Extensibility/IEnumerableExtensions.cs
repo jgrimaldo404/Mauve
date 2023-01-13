@@ -58,6 +58,15 @@ namespace Mauve.Extensibility
             return -1;
         }
         /// <summary>
+        /// Determines if the provided value is the last element in a specified collection.
+        /// </summary>
+        /// <typeparam name="T">Specifies the type of data contained in the collection.</typeparam>
+        /// <param name="collection">The collection to look for the element in.</param>
+        /// <param name="searchValue">The element to search the collection for.</param>
+        /// <returns><see langword="true"/> if <paramref name="searchValue"/> is the last element in <paramref name="collection"/>, otherwise <see langword="false"/>.</returns>
+        public static bool IsLast<T>(this IEnumerable<T> collection, T searchValue) =>
+            searchValue.Equals(collection.LastOrDefault());
+        /// <summary>
         /// Gets the next element in the specified <see cref="IEnumerable{T}"/>.
         /// </summary>
         /// <typeparam name="T">The type of object contained in the <see cref="IEnumerable{T}"/> instance.</typeparam>
