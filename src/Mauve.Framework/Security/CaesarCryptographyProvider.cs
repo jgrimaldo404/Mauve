@@ -11,27 +11,14 @@ namespace Mauve.Security
     /// <inheritdoc/>
     public class CaesarCryptographyProvider : CryptographyProvider
     {
-
-        #region Fields
-
         private readonly int _shift;
         private readonly SerializationMethod _serializationMethod;
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new <see cref="CaesarCryptographyProvider"/> instance using the specified shift.
         /// </summary>
         /// <param name="shift">The shift that the cipher should use.</param>
         public CaesarCryptographyProvider(int shift) =>
             _shift = shift;
-
-        #endregion
-
-        #region Public Methods
-
         /// <inheritdoc/>
         public override T Decrypt<T>(string input) =>
             // If no shift is present then simply deserialize.
@@ -66,8 +53,5 @@ namespace Mauve.Security
             // Return the result.
             return shiftedInput;
         }
-
-        #endregion
-
     }
 }

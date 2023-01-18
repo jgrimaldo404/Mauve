@@ -8,26 +8,13 @@ namespace Mauve.Runtime
     /// <inheritdoc/>
     public class EventMessageConsoleLogger : EventMessageLogger
     {
-
-        #region Fields
-
         private ConsoleColor _errorColor;
         private ConsoleColor _warningColor;
         private ConsoleColor _successColor;
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new <see cref="EventMessageConsoleLogger"/> instance.
         /// </summary>
         public EventMessageConsoleLogger() : base() { }
-
-        #endregion
-
-        #region Public Methods
-
         /// <summary>
         /// Specifies the colors to use for core <see cref="EventType"/> flags.
         /// </summary>
@@ -40,11 +27,6 @@ namespace Mauve.Runtime
             _warningColor = warningColor;
             _successColor = successColor;
         }
-
-        #endregion
-
-        #region Protected Methods
-
         protected override void WriteMessage(EventMessage message)
         {
             ConsoleColor currentColor = Console.ForegroundColor;
@@ -65,8 +47,5 @@ namespace Mauve.Runtime
                 Console.ForegroundColor = currentColor;
             }
         }
-
-        #endregion
-
     }
 }

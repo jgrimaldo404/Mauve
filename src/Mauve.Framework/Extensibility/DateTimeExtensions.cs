@@ -7,9 +7,6 @@ namespace Mauve.Extensibility
     /// </summary>
     public static class DateTimeExtensions
     {
-
-        #region Public Methods
-
         /// <summary>
         /// Translates the specified <see cref="DateTime"/> instance to a string using a specified <see cref="DateFormat"/>.
         /// </summary>
@@ -37,11 +34,6 @@ namespace Mauve.Extensibility
             universal
                 ? input.ToUniversalTime().ToString(format)
                 : input.ToString(format);
-
-        #endregion
-
-        #region Private Methods
-
         /// <summary>
         /// Gets the format specifier for a specified <see cref="DateFormat"/>.
         /// </summary>
@@ -57,8 +49,5 @@ namespace Mauve.Extensibility
                 default: return string.Empty;
             }
         }
-
-        #endregion
-
     }
 }

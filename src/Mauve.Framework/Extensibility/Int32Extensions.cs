@@ -9,9 +9,6 @@ namespace Mauve.Extensibility
     /// </summary>
     public static class Int32Extensions
     {
-
-        #region Public Methods
-
         /// <summary>
         /// Converts the specified <see cref="int"/> to a <see cref="string"/> representation of the specified <see cref="NumericBase"/>.
         /// </summary>
@@ -24,8 +21,5 @@ namespace Mauve.Extensibility
             var converter = new NumericBaseConverter();
             return converter.Convert(input.ToString(), NumericBase.Decimal, desiredBase);
         }
-
-        #endregion
-
     }
 }

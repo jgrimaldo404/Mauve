@@ -9,9 +9,6 @@ namespace Mauve.Security
     /// <typeparam name="T">The type of data acting as the signing authority for the signature.</typeparam>
     public class Signature<T> : IEquatable<Signature<T>>
     {
-
-        #region Properties
-
         /// <summary>
         /// The <see cref="T"/> representing the signing authority in this <see cref="Signature{T}"/>.
         /// </summary>
@@ -24,11 +21,6 @@ namespace Mauve.Security
         /// Any additional information related to the signature.
         /// </summary>
         public Dictionary<string, object> AdditionalInformation { get; private set; }
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new <see cref="Signature{T}"/> instance.
         /// </summary>
@@ -48,11 +40,6 @@ namespace Mauve.Security
             Authority = authority;
             Timestamp = timestamp;
         }
-
-        #endregion
-
-        #region Public Methods
-
         /// <summary>
         /// Determines if the current <see cref="Signature{T}"/> instance is equal to another.
         /// </summary>
@@ -62,8 +49,5 @@ namespace Mauve.Security
             Authority.Equals(other.Authority) &&
             Timestamp.Equals(other.Timestamp) &&
             AdditionalInformation.Equals(other.AdditionalInformation);
-
-        #endregion
-
     }
 }

@@ -9,16 +9,8 @@ namespace Mauve.Serialization
     /// <inheritdoc/>
     internal class YamlSerializationProvider : SerializationProvider
     {
-
-        #region Fields
-
         private readonly IDeserializer _deserializer;
         private readonly ISerializer _serializer;
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new instance of <see cref="JsonSerializationProvider"/>.
         /// </summary>
@@ -33,17 +25,9 @@ namespace Mauve.Serialization
                 .WithNamingConvention(UnderscoredNamingConvention.Instance)
                 .Build();
         }
-
-        #endregion
-
-        #region Public Methods
-
         /// <inheritdoc/>
         public override T Deserialize<T>(string input) => _deserializer.Deserialize<T>(input);
         /// <inheritdoc/>
         public override string Serialize<T>(T input) => _serializer.Serialize(input);
-
-        #endregion
-
     }
 }

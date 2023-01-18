@@ -8,9 +8,6 @@ namespace Mauve.Ui
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public class UiEditableAttribute : Attribute
     {
-
-        #region Properties
-
         /// <summary>
         /// The display name to be used in the user interface.
         /// </summary>
@@ -27,11 +24,6 @@ namespace Mauve.Ui
         /// The <see cref="ControlType"/> that should be used to edit in the user interface.
         /// </summary>
         public ControlType ControlType { get; private set; }
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new instance of <see cref="UiEditableAttribute"/> using the specified display name and <see cref="ControlType"/>.
         /// </summary>
@@ -72,8 +64,5 @@ namespace Mauve.Ui
             DefaultValue = defaultValue;
             ControlType = controlType;
         }
-
-        #endregion
-
     }
 }

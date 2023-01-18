@@ -5,9 +5,6 @@
     /// </summary>
     public class EventMessage
     {
-
-        #region Properties
-
         /// <summary>
         /// The <see cref="EventType"/> associated with this message.
         /// </summary>
@@ -16,11 +13,6 @@
         /// The message value.
         /// </summary>
         public string Value { get; set; }
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new <see cref="EventMessage"/> instance.
         /// </summary>
@@ -36,8 +28,5 @@
         /// <param name="type">The <see cref="EventType"/> associated with the message.</param>
         /// <param name="message">The value of the message.</param>
         public EventMessage(EventType type, string message) : this(message) => Type = type;
-
-        #endregion
-
     }
 }

@@ -14,15 +14,7 @@ namespace Mauve.Runtime.Processing
     /// <typeparam name="T">Specifies the type which the rule applies to.</typeparam>
     public class DynamicRule<T> : IRule<T>
     {
-
-        #region Fields
-
         private readonly List<Func<T, bool>> _functions;
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         /// Creates a new <see cref="DynamicRule{T}"/> instance.
         /// </summary>
@@ -35,11 +27,6 @@ namespace Mauve.Runtime.Processing
         /// <param name="functions">The functions the rule should apply.</param>
         public DynamicRule(params Func<T, bool>[] functions) =>
             _functions = new List<Func<T, bool>>(functions);
-
-        #endregion
-
-        #region Public Methods
-
         /// <summary>
         /// Applies the rule to the specified input.
         /// </summary>
@@ -58,11 +45,6 @@ namespace Mauve.Runtime.Processing
         /// <returns>A <see cref="Task"/> that describes the state of the application.</returns>
         public async Task Apply(T input, CancellationToken cancellationToken) =>
             await Task.Run(() => Apply(input), cancellationToken);
-
-        #endregion
-
-        #region Private Methods
-
         private void ApplyRecursive(T input, Func<T, bool> currentFunction, Func<T, bool> nextFunction)
         {
             if (currentFunction?.Invoke(input) == true)
@@ -73,8 +55,5 @@ namespace Mauve.Runtime.Processing
                 ApplyRecursive(input, nextFunction, _functions.NextOrDefault(nextFunction));
             }
         }
-
-        #endregion
-
     }
 }

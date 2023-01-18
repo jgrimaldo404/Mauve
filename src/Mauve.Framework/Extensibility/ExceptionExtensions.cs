@@ -9,9 +9,6 @@ namespace Mauve.Extensibility
     /// </summary>
     public static class ExceptionExtensions
     {
-
-        #region Public Methods
-
         /// <summary>
         /// Recursively flattens the specified exception and all inner exceptions into a single <see cref="IEnumerable{T}"/>.
         /// </summary>
@@ -40,11 +37,6 @@ namespace Mauve.Extensibility
             IEnumerable<string> messages = exceptions.Select(s => s.Message);
             return string.Join(separator, messages);
         }
-
-        #endregion
-
-        #region Private Methods
-
         private static IEnumerable<Exception> FlattenRecursive(Exception target, IEnumerable<Exception> flattenedExceptions)
         {
             // Append the target, then capture the inner exception and return.
@@ -57,8 +49,5 @@ namespace Mauve.Extensibility
             // If the target is null then there is nothing to append and no need to dive further.
             return flattenedExceptions;
         }
-
-        #endregion
-
     }
 }

@@ -9,24 +9,11 @@ namespace Mauve.Runtime.Processing
     /// </summary>
     public class Ruleset<T> : IRule<T>
     {
-
-        #region Fields
-
         private readonly List<IRule<T>> _rules;
-
-        #endregion
-
-        #region Properties
-
         /// <summary>
         /// The rules which this <see cref="Ruleset"/> applies.
         /// </summary>
         public IReadOnlyCollection<IRule<T>> Rules => _rules.AsReadOnly();
-
-        #endregion
-
-        #region Public Methods
-
         /// <summary>
         /// Adds a new <see cref="IRule{T}"/> to the <see cref="Ruleset{T}"/>.
         /// </summary>
@@ -55,8 +42,5 @@ namespace Mauve.Runtime.Processing
         /// </summary>
         /// <param name="rule">The <see cref="IRule{T}"/> to remove.</param>
         public void Remove(IRule<T> rule) => _rules.Remove(rule);
-
-        #endregion
-
     }
 }
