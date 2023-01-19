@@ -7,7 +7,7 @@ namespace Mauve
     /// <summary>
     /// An <see cref="Attribute"/> designed for aliasing objects and their members.
     /// </summary>
-    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
     public class AliasAttribute : Attribute
     {
         /// <summary>
