@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <AssemblyName>Mauve+</AssemblyName>
+    <AssemblyName>Mauve</AssemblyName>
     <Deterministic>false</Deterministic>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
@@ -19,8 +19,14 @@
     <RepositoryUrl>https://github.com/tacosontitan/Mauve</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>events;framework;tools;extensions;design-patterns;abstraction;event-driven;extension-methods;dotnet;frameworks</PackageTags>
-    <PackageReleaseNotes>🐣 Pre-Release (2023.0.0.3)
-Synchronizes version with Mauve.Framework.</PackageReleaseNotes>
+    <PackageReleaseNotes>## What's Changed
+* Minor repairs to middleware. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/114
+* Added deprecation notice for Mauve.Framework. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/116
+* Bug fixes, and deprecation efforts. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/120
+* Adds support for IsConcrete. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/124
+* Adds null handling to flatten messages. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/128
+
+**Full Changelog**: https://github.com/tacosontitan/Mauve/compare/2023.0.0.3...2023.0.0.5</PackageReleaseNotes>
     <PackageOutputPath>$(OutputPath)</PackageOutputPath>
     <PackageId>Mauve</PackageId>
     <PackAsTool>False</PackAsTool>
@@ -28,7 +34,7 @@ Synchronizes version with Mauve.Framework.</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <Authors>Taco (タコス) 🌮</Authors>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <Version>2023.0.0.3</Version>
+    <Version>2023.0.0.5</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
