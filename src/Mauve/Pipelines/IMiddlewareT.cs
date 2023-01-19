@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Mauve.Patterns
+namespace Mauve.Pipelines
 {
     /// <summary>
     /// Represents an <see langword="interface"/> exposing methods for implementing middleware.

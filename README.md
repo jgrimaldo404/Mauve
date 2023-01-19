@@ -24,5 +24,11 @@ The `Mauve.Framework` project has officially been deprecated and efforts are bei
 ## Release Notes
 Here you can find the most recent release notes for each Mauve product.
 
-### Framework
- - Current Version: 🐣 Pre-Release
+### Latest Release (2023.0.0.5)
+* Minor repairs to middleware. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/114
+* Added deprecation notice for Mauve.Framework. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/116
+* Bug fixes, and deprecation efforts. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/120
+* Adds support for IsConcrete. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/124
+* Adds null handling to flatten messages. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/128
+
+**Full Changelog**: https://github.com/tacosontitan/Mauve/compare/2023.0.0.3...2023.0.0.5

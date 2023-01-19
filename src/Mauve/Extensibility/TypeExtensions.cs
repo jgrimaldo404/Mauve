@@ -31,12 +31,12 @@ namespace Mauve.Extensibility
 
             Type[] parameters = parent.GetGenericArguments();
             bool isParameterLessGeneric = !(parameters != null && parameters.Length > 0 &&
-                ((parameters[0].Attributes & TypeAttributes.BeforeFieldInit) == TypeAttributes.BeforeFieldInit));
+                (parameters[0].Attributes & TypeAttributes.BeforeFieldInit) == TypeAttributes.BeforeFieldInit);
 
             while (child != null && child != typeof(object))
             {
                 Type cur = GetFullTypeDefinition(child);
-                if (parent == cur || (isParameterLessGeneric && cur.GetInterfaces().Select(i => GetFullTypeDefinition(i)).Contains(GetFullTypeDefinition(parent))))
+                if (parent == cur || isParameterLessGeneric && cur.GetInterfaces().Select(i => GetFullTypeDefinition(i)).Contains(GetFullTypeDefinition(parent)))
                     return true;
                 else if (!isParameterLessGeneric)
                     if (GetFullTypeDefinition(parent) == cur && !cur.IsInterface)

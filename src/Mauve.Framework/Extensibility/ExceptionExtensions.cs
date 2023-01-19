@@ -33,9 +33,9 @@ namespace Mauve.Extensibility
             if (root is null || string.IsNullOrWhiteSpace(separator))
                 return string.Empty;
 
-            IEnumerable<Exception> exceptions = root.Flatten();
-            IEnumerable<string> messages = exceptions.Select(s => s.Message);
-            return string.Join(separator, messages);
+            IEnumerable<Exception> exceptions = root?.Flatten();
+            IEnumerable<string> messages = exceptions?.Select(s => s.Message);
+            return messages is null ? string.Empty : string.Join(separator, messages);
         }
         private static IEnumerable<Exception> FlattenRecursive(Exception target, IEnumerable<Exception> flattenedExceptions)
         {

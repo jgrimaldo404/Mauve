@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
-
-namespace Mauve.Serialization
+﻿namespace Mauve.Serialization
 {
     /// <summary>
     /// Represents a <see cref="SerializationMethod"/> for the serialization and deserialization of data.
@@ -11,11 +9,6 @@ namespace Mauve.Serialization
         /// Represents an unspecified or unsupported serialization method.
         /// </summary>
         None = 0,
-        /// <summary>
-        /// Represents binary serialization which utilizes the public and private fields of the object and the name of the class, including the assembly containing the class. Binary serialization allows modifying private members inside an object and therefore changing the state of it. Because of this, other serialization frameworks, like <see href="https://www.newtonsoft.com/json">Newtonsoft.Json</see>, that operate on the public API surface are recommended. <see href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/binary-serialization">Learn more</see>.
-        /// </summary>
-        /// <remarks>Binary serialization can be dangerous. For more information, see the <see href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide">security guide</see> for <see cref="BinaryFormatter"/>.</remarks>
-        Binary = 1,
         /// <summary>
         /// <see href="https://en.wikipedia.org/wiki/XML">Extensible Markup Language</see> is a markup language and file format for storing, transmitting, and reconstructing arbitrary data.
         /// </summary>
