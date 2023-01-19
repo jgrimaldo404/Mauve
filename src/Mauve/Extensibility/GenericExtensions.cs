@@ -1,13 +1,6 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 
-using Mauve.Math;
-using Mauve.Patterns;
-using Mauve.Security;
 using Mauve.Serialization;
 
 namespace Mauve.Extensibility
@@ -17,92 +10,6 @@ namespace Mauve.Extensibility
     /// </summary>
     public static class GenericExtensions
     {
-        /// <summary>
-        /// Gets the hash code of the input in the specified <see cref="NumericBase"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the input.</typeparam>
-        /// <param name="input">The input to get the hash code of.</param>
-        /// <param name="numericBase">The <see cref="NumericBase"/> to return the hash code in.</param>
-        /// <returns>Returns the hash code of the specified input in the specified <see cref="NumericBase"/>.</returns>
-        public static string GetHashCode<T>(this T input, NumericBase numericBase) =>
-            GetHashCode(input, HashType.None, numericBase, Encoding.Unicode, SerializationMethod.Json);
-        /// <summary>
-        /// Gets the hash code of the input using <see cref="Encoding.Unicode"/> and <see cref="SerializationMethod.Json"/> along with the specified <see cref="HashType"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the input.</typeparam>
-        /// <param name="input">The input to get the hash code of.</param>
-        /// <param name="hashType">The <see cref="HashType"/> that should be used to compute the hash of the input.</param>
-        /// <returns>Returns the hash code of the specified input.</returns>
-        /// <remarks>Defaults to <see cref="object.GetHashCode()"/></remarks>
-        public static string GetHashCode<T>(this T input, HashType hashType) =>
-            GetHashCode(input, hashType, NumericBase.Hexadecimal, Encoding.Unicode, SerializationMethod.Json);
-        /// <summary>
-        /// Gets the hash code of the input using <see cref="SerializationMethod.Json"/> along with the specified <see cref="HashType"/> and <see cref="Encoding"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the input.</typeparam>
-        /// <param name="input">The input to get the hash code of.</param>
-        /// <param name="hashType">The <see cref="HashType"/> that should be used to compute the hash of the input.</param>
-        /// <param name="encoding">The <see cref="Encoding"/> that should be used to encode the serialized input.</param>
-        /// <returns>Returns the hash code of the specified input.</returns>
-        /// <remarks>Defaults to <see cref="object.GetHashCode()"/></remarks>
-        public static string GetHashCode<T>(this T input, HashType hashType, Encoding encoding) =>
-            GetHashCode(input, hashType, NumericBase.Hexadecimal, encoding, SerializationMethod.Json);
-        /// <summary>
-        /// Gets the hash code of the input using <see cref="Encoding.Unicode"/> along with the specified <see cref="HashType"/> and <see cref="SerializationMethod"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the input.</typeparam>
-        /// <param name="input">The input to get the hash code of.</param>
-        /// <param name="hashType">The <see cref="HashType"/> that should be used to compute the hash of the input.</param>
-        /// <param name="serializationMethod">The <see cref="SerializationMethod"/> that should be used to serialize the input prior to hashing.</param>
-        /// <returns>Returns the hash code of the specified input.</returns>
-        /// <remarks>Defaults to <see cref="object.GetHashCode()"/></remarks>
-        public static string GetHashCode<T>(this T input, HashType hashType, SerializationMethod serializationMethod) =>
-            GetHashCode(input, hashType, NumericBase.Hexadecimal, Encoding.Unicode, serializationMethod);
-        /// <summary>
-        /// Gets the hash code of the input using the specified <see cref="HashType"/>, <see cref="Encoding"/>, and <see cref="SerializationMethod"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the input.</typeparam>
-        /// <param name="input">The input to get the hash code of.</param>
-        /// <param name="hashType">The <see cref="HashType"/> that should be used to compute the hash of the input.</param>
-        /// <param name="numericBase">The desired <see cref="NumericBase"/> of the output.</param>
-        /// <param name="encoding">The <see cref="Encoding"/> that should be used to encode the serialized input.</param>
-        /// <param name="serializationMethod">The <see cref="SerializationMethod"/> that should be used to serialize the input prior to hashing.</param>
-        /// <returns>Returns the hash code of the specified input.</returns>
-        /// <remarks>Defaults to <see cref="object.GetHashCode()"/></remarks>
-        public static string GetHashCode<T>(this T input, HashType hashType, NumericBase numericBase, Encoding encoding, SerializationMethod serializationMethod)
-        {
-            // Serialize the input and determine the hashing algorithm to use.
-            string serializedInput = input.Serialize(serializationMethod);
-            HashAlgorithm hashAlgorithm = null;
-            switch (hashType)
-            {
-                case HashType.Md5: hashAlgorithm = new MD5CryptoServiceProvider(); break;
-                case HashType.Sha256: hashAlgorithm = new SHA256CryptoServiceProvider(); break;
-                case HashType.Sha384: hashAlgorithm = new SHA384CryptoServiceProvider(); break;
-                case HashType.Sha512: hashAlgorithm = new SHA512CryptoServiceProvider(); break;
-            }
-
-            // Create a variable for storing the result.
-            string result;
-
-            // Compute the hash and convert it to hexadecimal.
-            if (hashAlgorithm is null)
-                result = serializedInput.GetHashCode().ToString("x");
-            else
-            {
-                byte[] data = encoding.GetBytes(serializedInput);
-                byte[] hash = hashAlgorithm.ComputeHash(data);
-                result = BitConverter.ToString(hash).Replace("-", "").ToLower();
-            }
-
-            // If the desired base is hexadecimal, we're done.
-            if (numericBase.Equals(NumericBase.Hexadecimal))
-                return result;
-
-            // If a different base was specified, then convert to it and return the result.
-            var converter = new NumericBaseConverter();
-            return converter.Convert(result, NumericBase.Hexadecimal, numericBase);
-        }
         /// <summary>
         /// Determines if a specified value is present in a specified collection using a specified equality comparer.
         /// </summary>
