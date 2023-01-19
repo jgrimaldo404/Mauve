@@ -10,11 +10,11 @@ namespace Mauve.Security
     public class Signature<T> : IEquatable<Signature<T>>
     {
         /// <summary>
-        /// The <see cref="T"/> representing the signing authority in this <see cref="Signature{T}"/>.
+        /// The signing authority in the <see cref="Signature{T}"/>.
         /// </summary>
         public T Authority { get; set; }
         /// <summary>
-        /// The timestamp this signature was made.
+        /// The timestamp the signature was made.
         /// </summary>
         public DateTime? Timestamp { get; set; }
         /// <summary>
@@ -28,13 +28,13 @@ namespace Mauve.Security
         /// <summary>
         /// Creates a new <see cref="Signature{T}"/> instance using the specified authority.
         /// </summary>
-        /// <param name="authority">The <see cref="T"/> representing the signing authority in this <see cref="Signature{T}"/>.</param>
+        /// <param name="authority">The <see cref="T"/> representing the signing authority in the <see cref="Signature{T}"/>.</param>
         public Signature(T authority) : this() => Authority = authority;
         /// <summary>
         /// Creates a new <see cref="Signature{T}"/> using the specified authority and timestamp.
         /// </summary>
-        /// <param name="authority">The <see cref="T"/> representing the signing authority in this <see cref="Signature{T}"/>.</param>
-        /// <param name="timestamp">The timestamp this signature was made.</param>
+        /// <param name="authority">The <see cref="T"/> representing the signing authority in the <see cref="Signature{T}"/>.</param>
+        /// <param name="timestamp">The timestamp the signature was made.</param>
         public Signature(T authority, DateTime timestamp) : this()
         {
             Authority = authority;

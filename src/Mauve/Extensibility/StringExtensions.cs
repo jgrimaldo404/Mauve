@@ -31,7 +31,7 @@ namespace Mauve.Extensibility
                 StringComparison.InvariantCulture;
 
             // Return whether or not the input string contains comparison string, with respect to the comparison type.
-            return !(target is null) && input?.IndexOf(target, comparisonType) >= 0;
+            return target is not null && input?.IndexOf(target, comparisonType) >= 0;
         }
         /// <summary>
         /// Deserializes the specified input utilizing the specified <see cref="SerializationMethod"/>.
@@ -40,22 +40,19 @@ namespace Mauve.Extensibility
         /// <param name="input">The serialized data to be deserialized.</param>
         /// <param name="serializationMethod">The <see cref="SerializationMethod"/> that should be utilized for deserialization.</param>
         /// <returns>Returns the input deserialized using the specified <see cref="SerializationMethod"/>.</returns>
+        /// <exception cref="InvalidOperationException"><paramref name="serializationMethod"/> is <see cref="SerializationMethod.None"/>.</exception>
         public static T Deserialize<T>(this string input, SerializationMethod serializationMethod)
         {
             // Validate the input parameters.
             if (string.IsNullOrWhiteSpace(input))
                 return default;
-
-            SerializationProvider serializationProvider;
-            switch (serializationMethod)
+            SerializationProvider serializationProvider = serializationMethod switch
             {
-                case SerializationMethod.Binary: serializationProvider = new BinarySerializationProvider(); break;
-                case SerializationMethod.Xml: serializationProvider = new XmlSerializationProvider(); break;
-                case SerializationMethod.Json: serializationProvider = new JsonSerializationProvider(); break;
-                case SerializationMethod.Yaml: serializationProvider = new YamlSerializationProvider(); break;
-                default: serializationProvider = new RawSerializationProvider(); break;
-            }
-
+                SerializationMethod.Xml => new XmlSerializationProvider(),
+                SerializationMethod.Json => new JsonSerializationProvider(),
+                SerializationMethod.Yaml => new YamlSerializationProvider(),
+                _ => throw new InvalidOperationException("Unable to deserialize an unspecified serialization method."),
+            };
             return serializationProvider.Deserialize<T>(input);
         }
         /// <summary>
@@ -77,7 +74,7 @@ namespace Mauve.Extensibility
                 StringComparison.InvariantCulture;
 
             // Return whether or not the input string is equal to the comparison string, with respect to the comparison type.
-            return !(target is null) && input?.Equals(target, comparisonType) == true;
+            return target is not null && input?.Equals(target, comparisonType) == true;
         }
         /// <summary>
         /// Removes specified values from the input ignoring case.
@@ -194,7 +191,6 @@ namespace Mauve.Extensibility
         /// Takes the specified input from the first identified instance of a specified search value.
         /// </summary>
         /// <param name="input">The input to search.</param>
-        /// <param name="ignoreCase">Should casing be ignored?</param>
         /// <param name="searchValues">The values to search for.</param>
         /// <returns>Returns the input string from the first identified search value or, the beginning of the input when no values are found.</returns>
         public static string TakeAfter(this string input, params string[] searchValues) =>
@@ -227,7 +223,7 @@ namespace Mauve.Extensibility
                     int startIndex = index + searchValue.Length;
                     return startIndex > input.Length
                         ? string.Empty
-                        : input.Substring(startIndex);
+                        : input[startIndex..];
                 }
             }
 
@@ -238,7 +234,6 @@ namespace Mauve.Extensibility
         /// Takes the specified input from the first identified instance of a specified search value.
         /// </summary>
         /// <param name="input">The input to search.</param>
-        /// <param name="ignoreCase">Should casing be ignored?</param>
         /// <param name="searchValues">The values to search for.</param>
         /// <returns>Returns the input string from the first identified search value or, the beginning of the input when no values are found.</returns>
         public static string TakeFrom(this string input, params string[] searchValues) =>
@@ -267,7 +262,7 @@ namespace Mauve.Extensibility
                 // If a specified value is found, return the input up to that value.
                 int index = input.IndexOf(searchValue, comparison);
                 if (index >= 0)
-                    return input.Substring(index);
+                    return input[index..];
             }
 
             // Return the input if no values were found.
@@ -307,7 +302,7 @@ namespace Mauve.Extensibility
                 if (index >= 0)
                     return index == 0
                         ? string.Empty
-                        : input.Substring(0, index);
+                        : input[..index];
             }
 
             // Return the input if no values were found.

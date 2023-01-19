@@ -1,4 +1,4 @@
-﻿namespace Mauve.Patterns
+﻿namespace Mauve
 {
     /// <summary>
     /// Represents an <see cref="interface"/> that exposes methods for conversion between two concrete types.
