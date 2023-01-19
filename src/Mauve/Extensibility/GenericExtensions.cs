@@ -60,13 +60,12 @@ namespace Mauve.Extensibility
         {
             SerializationProvider serializationProvider = serializationMethod switch
             {
-                SerializationMethod.Binary => new BinarySerializationProvider(),
                 SerializationMethod.Xml => new XmlSerializationProvider(),
                 SerializationMethod.Json => new JsonSerializationProvider(),
                 SerializationMethod.Yaml => new YamlSerializationProvider(),
-                _ => new RawSerializationProvider(),
+                _ => null
             };
-            return serializationProvider.Serialize(input);
+            return serializationProvider?.Serialize(input);
         }
     }
 }
