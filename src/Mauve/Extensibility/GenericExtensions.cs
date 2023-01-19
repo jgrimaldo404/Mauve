@@ -30,15 +30,6 @@ namespace Mauve.Extensibility
         public static bool In<T>(this T input, IEqualityComparer<T> equalityComparer, params T[] collection) =>
             collection?.Any(a => equalityComparer.Equals(a, input)) == true;
         /// <summary>
-        /// Translates the specified input to a specified output type using a <see cref="BasicAdapter{T1, T2}"/>.
-        /// </summary>
-        /// <typeparam name="TIn">Specifies the type of input.</typeparam>
-        /// <typeparam name="TOut">Specifies the type of output expected.</typeparam>
-        /// <param name="input">The input to translate.</param>
-        /// <returns>Returns the input translated to the specified output type.</returns>
-        public static TOut Translate<TIn, TOut>(this TIn input) =>
-            Translate(input, new BasicAdapter<TIn, TOut>());
-        /// <summary>
         /// Translates the specified input to a specified output type using a specified <see cref="IAdapter{T1, T2}"/>.
         /// </summary>
         /// <typeparam name="TIn">Specifies the type of input.</typeparam>
