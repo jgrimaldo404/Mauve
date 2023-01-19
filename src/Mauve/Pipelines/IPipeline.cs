@@ -1,9 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-using Mauve.Patterns;
-
-namespace Mauve.Runtime
+namespace Mauve.Pipelines
 {
     public interface IPipeline<T>
     {
