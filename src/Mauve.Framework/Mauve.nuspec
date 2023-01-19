@@ -10,8 +10,14 @@
     <projectUrl>https://github.com/tacosontitan/Mauve</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/tacosontitan/Mauve/main/.resources/mauve.png</iconUrl>
     <description>$description$</description>
-    <releaseNotes>🐣 Pre-Release (2023.0.0.3)
-      Synchronizes Mauve packages.</releaseNotes>
+    <releaseNotes># What's Changed in 2023.0.0.5?
+      * Minor repairs to middleware. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/114
+      * Added deprecation notice for Mauve.Framework. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/116
+      * Bug fixes, and deprecation efforts. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/120
+      * Adds support for IsConcrete. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/124
+      * Adds null handling to flatten messages. by @tacosontitan in https://github.com/tacosontitan/Mauve/pull/128
+      
+      **Full Changelog**: https://github.com/tacosontitan/Mauve/compare/2023.0.0.3...2023.0.0.5</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>events framework tools extensions design-patterns abstraction event-driven extension-methods dotnet frameworks</tags>
   </metadata>
