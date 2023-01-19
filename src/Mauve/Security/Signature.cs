@@ -10,7 +10,7 @@ namespace Mauve.Security
     public class Signature<T> : IEquatable<Signature<T>>
     {
         /// <summary>
-        /// The <see cref="T"/> representing the signing authority in this <see cref="Signature{T}"/>.
+        /// The signing authority in this <see cref="Signature{T}"/>.
         /// </summary>
         public T Authority { get; set; }
         /// <summary>
